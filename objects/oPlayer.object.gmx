@@ -29,25 +29,43 @@
  * Step events executes on every frame of the game.
  */
 
+ 
+/*
+ * Movement code
+ */
 var mySpeed = 10;
 
-// Bonus code for vid 1
-if keyboard_check(vk_space) {
+if (keyboard_check(vk_space)) {
     mySpeed = mySpeed/2;
 }
 
-if keyboard_check(ord('W')) {
+if (keyboard_check(ord('W'))) {
     y = y - mySpeed;
 };
-if keyboard_check(ord('S')) {
+if (keyboard_check(ord('S'))) {
     y = y + mySpeed;
 };
-if keyboard_check(ord('A')) {
+if (keyboard_check(ord('A'))) {
     x = x - mySpeed;
 };
-if keyboard_check(ord('D')) {
+if (keyboard_check(ord('D'))) {
     x = x + mySpeed;
 };
+
+/*
+ * Facing
+ */
+image_angle = point_direction(x, y, mouse_x, mouse_y);
+
+/*
+ * Firing
+ */
+if (mouse_check_button(mb_left)) {
+    var myBullet = instance_create(x, y, oBullet);
+    myBullet.direction = image_angle;
+    myBullet.speed = m20;
+};
+
 </string>
           </argument>
         </arguments>
