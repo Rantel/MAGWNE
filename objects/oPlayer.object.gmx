@@ -31,6 +31,11 @@
 
 var mySpeed = 10;
 
+// Bonus code for vid 1
+if keyboard_check(vk_space) {
+    mySpeed = mySpeed/2;
+}
+
 if keyboard_check(ord('W')) {
     y = y - mySpeed;
 };
