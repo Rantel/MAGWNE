@@ -11,9 +11,12 @@
     <sprite>sprites\sEnemy</sprite>
     <sprite>sprites\sEnemy2</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
+    <object>objects\oGame</object>
     <object>objects\oPlayer</object>
     <object>objects\oBullet</object>
     <object>objects\oEnemy</object>
