@@ -81,6 +81,14 @@ if (image_yscale &lt;= 0) {
     instance_create(random(room_width), random(room_height), oEnemy);
     instance_destroy();
 }
+
+/*
+ * Hitting the player
+ */
+if (instance_exists(instance_place(x, y, oPlayer))) {
+    instance_create(random(room_width), random(room_height), oEnemy);
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
