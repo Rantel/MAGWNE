@@ -9,6 +9,7 @@
     <sprite>sprites\sPlayer</sprite>
     <sprite>sprites\sBullet</sprite>
     <sprite>sprites\sEnemy</sprite>
+    <sprite>sprites\sEnemy2</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,6 +17,7 @@
     <object>objects\oPlayer</object>
     <object>objects\oBullet</object>
     <object>objects\oEnemy</object>
+    <object>objects\oEnemy2</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
