@@ -88,12 +88,7 @@ if (y &gt; room_height) y = room_height;
  */
 enemyTouchingMe = instance_place(x, y, oEnemy);
 if (instance_exists(enemyTouchingMe)) {
-   for (var bits = 0; bits &lt; oGame.numberOfPlayerBits; bits++) {
-       var bit = instance_create(x, y, oPlayerChunk);
-   }
-   
-   audio_play_sound(aExplosion, 2, false);
-   instance_destroy();
+   explodeIntoSomeChunks(oGame.numberOfPlayerBits, oPlayerChunk);
 }
 </string>
           </argument>

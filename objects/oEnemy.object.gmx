@@ -57,21 +57,12 @@ image_angle = direction;
 /*
  * Bouncing on edge of room
  */
-if ((y &lt;= 0) || (y &gt;= room_height)) {
-    vspeed = -vspeed;
-}
-if ((x &lt;= 0) || (x &gt;= room_width)) {
-    hspeed = -hspeed;
-};
+bounceOffWalls();
 
 /*
  * Damage
  */
-incomingBullet = instance_place(x, y, oBullet);
-if (instance_exists(incomingBullet)) {    
-    with (incomingBullet) {
-        instance_destroy();
-    }
+if (isHitByProjectile()) {  
     
     image_yscale = image_yscale - 0.2;
     image_xscale = image_yscale;
