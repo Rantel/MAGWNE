@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -69,14 +69,6 @@ if ((x &lt;= 0) || (x &gt;= room_width)) {
  */
 if (is_hit_by_projectile()) {  
     explode_into_some_chunks(5, obj_exploding_enemy_fragment);
-}
-
-/*
- * Hitting the player
- */
-if (instance_exists(instance_place(x, y, obj_player))) {
-    instance_create(random(room_width), random(room_height), obj_exploding_enemy);
-    instance_destroy();
 }
 </string>
           </argument>

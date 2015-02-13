@@ -26,12 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>/*
- * Globals
- */
-number_of_player_bits = 9;
-bits_reassembled = 0;
-
-/*
  * Screen configs.
  */
 window_set_fullscreen(true);

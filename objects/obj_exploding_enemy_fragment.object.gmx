@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = random(360);
+            <string>acceleration_while_exploding = 400; // pixels per second per second
+
+direction = random(360);
 image_angle = direction;
 speed = 750 / room_speed;
 speed *= random_range(0.5, 1.5);
@@ -51,10 +53,8 @@ speed *= random_range(0.5, 1.5);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>deceleration = 400 // pixels per second per second
-
-if (speed &gt; 0)  {
-   speed = speed - (deceleration / (room_speed * room_speed));
+            <string>if (speed &gt; 0)  {
+   speed = speed - (acceleration_while_exploding / (room_speed * room_speed));
 } else {
    speed = 0;
 }
@@ -63,6 +63,13 @@ image_xscale -= (1 / room_speed);
 image_yscale = image_xscale;
 
 if (image_yscale &lt;= 0) instance_destroy();
+
+/*
+ * Delete bullets that leave the room.
+ */
+if ((x &lt; 0) || (x &gt; room_width) || (y &lt; 0) || (y &gt; room_height)) {
+   instance_destroy();
+}
 </string>
           </argument>
         </arguments>

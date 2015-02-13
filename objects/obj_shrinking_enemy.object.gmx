@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 90 / room_speed;
+            <string>default_speed = 90; // pixels per second
+
+speed = default_speed / room_speed;
 direction = random(360);
 </string>
           </argument>
@@ -69,14 +71,6 @@ if (is_hit_by_projectile()) {
 }
 
 if (image_yscale &lt;= 0) {
-    instance_create(random(room_width), random(room_height), obj_shrinking_enemy);
-    instance_destroy();
-}
-
-/*
- * Hitting the player
- */
-if (instance_exists(instance_place(x, y, obj_player))) {
     instance_create(random(room_width), random(room_height), obj_shrinking_enemy);
     instance_destroy();
 }

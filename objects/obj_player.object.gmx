@@ -8,6 +8,32 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>default_speed = 300; // In pixels per second.
+kick_displacement = 5; // In pixels
+
+number_of_fragments_player_splits_into = 9;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -26,30 +52,21 @@
           <argument>
             <kind>1</kind>
             <string>/*
- * Step events executes on every frame of the game.
- */
-
- 
-/*
  * Movement code
  */
-var my_speed = 300 / room_speed;
-
-if (keyboard_check(vk_space)) {
-    my_speed = my_speed/2;
-}
+var current_speed = default_speed / room_speed;
 
 if (keyboard_check(ord('W'))) {
-    y = y - my_speed;
+    y = y - current_speed;
 }
 if (keyboard_check(ord('S'))) {
-    y = y + my_speed;
+    y = y + current_speed;
 }
 if (keyboard_check(ord('A'))) {
-    x = x - my_speed;
+    x = x - current_speed;
 }
 if (keyboard_check(ord('D'))) {
-    x = x + my_speed;
+    x = x + current_speed;
 }
 
 /*
@@ -61,16 +78,14 @@ image_angle = point_direction(x, y, mouse_x, mouse_y);
  * Firing
  */
 if (mouse_check_button(mb_left)) {
-    var my_bullet = instance_create(x, y, obj_bullet);
-    my_bullet.direction = image_angle;
-    my_bullet.image_angle = image_angle;
-    my_bullet.speed = 600 / room_speed;
+    var new_bullet = instance_create(x, y, obj_bullet);
+    new_bullet.direction = image_angle;
+    new_bullet.image_angle = image_angle;
+    new_bullet.speed = 600 / room_speed;
     
-    var kick = 300 / room_speed;
-    var kick_direction = (image_angle + 180) % 360;
-    
-    x = x + lengthdir_x(kick, kick_direction);
-    y = y + lengthdir_y(kick, kick_direction);
+    var kick_direction = (image_angle + 180) % 360;    
+    x = x + lengthdir_x(kick_displacement, kick_direction);
+    y = y + lengthdir_y(kick_displacement, kick_direction);
     
     audio_play_sound(snd_bullet_shot, 1, false);
 }
@@ -86,9 +101,9 @@ if (y &gt; room_height) y = room_height;
 /*
  * Death
  */
-var enemy_touching_me = instance_place(x, y, obj_shrinking_enemy);
-if (instance_exists(enemy_touching_me)) {
-   explode_into_some_chunks(obj_game.number_of_player_bits, obj_player_fragment);
+var enemy_touching_me = instance_place(x, y, obj_enemy);
+if (enemy_touching_me != noone) {
+   explode_into_some_chunks(number_of_fragments_player_splits_into, obj_player_fragment);
 }
 </string>
           </argument>

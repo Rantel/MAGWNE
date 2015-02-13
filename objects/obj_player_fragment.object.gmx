@@ -28,13 +28,19 @@
             <string>reassembling = false;
 in_position = true;
 
+starting_x = x;
+starting_y = y;
+
+acceleration_while_exploding = 300 // pixels per second per second
+acceleration_while_reforming = 600 // pixels per second per second
+
+
+number_of_fragments_reassembled = 0;
+
 direction = random(360);
 image_angle = direction;
 speed = 600 / room_speed;
 speed *= random_range(0.5, 1.5);
-
-starting_x = x;
-starting_y = y;
 </string>
           </argument>
         </arguments>
@@ -57,29 +63,26 @@ starting_y = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>acceleration = 300
-deceleration = 600 // pixels per second per second
-
-if (!reassembling) {
+            <string>if (!reassembling) {
    if (speed &gt; 0)  {
-      speed = speed - (deceleration / (room_speed * room_speed));
+      speed = speed - (acceleration_while_exploding / (room_speed * room_speed));
       } else {
       reassembling = true;
       speed = 0;
       direction = (direction + 180) % 360;
       }
 } else {
-   speed += (acceleration / (room_speed * room_speed));
+   speed += (acceleration_while_reforming / (room_speed * room_speed));
    if (point_distance(x, y, starting_x, starting_y) &lt; speed) {
       speed = 0;
       x = starting_x;
       y = starting_y;
       if (in_position) {
-         obj_game.bits_reassembled++;
+         obj_player_fragment.number_of_fragments_reassembled++;
          in_position = !in_position;
       }
-      if (obj_game.bits_reassembled &gt;= obj_game.number_of_player_bits) {
-           obj_game.bits_reassembled = 0;
+      if (obj_player_fragment.number_of_fragments_reassembled &gt;= instance_number(obj_player_fragment)) {
+           obj_player_fragment.number_of_fragments_reassembled = 0;
            instance_create(x, y, obj_player);
            with (obj_player_fragment) instance_destroy();  
       }                
