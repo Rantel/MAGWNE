@@ -5,38 +5,39 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\aShoot</sound>
-    <sound>sound\aExplosion</sound>
+    <sound>sound\snd_bullet_shot</sound>
+    <sound>sound\snd_player_explosion</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\sPlayer</sprite>
-    <sprite>sprites\sPlayerChunk</sprite>
-    <sprite>sprites\sBullet</sprite>
-    <sprite>sprites\sEnemy</sprite>
-    <sprite>sprites\sExplodingEnemy</sprite>
-    <sprite>sprites\sExplodingEnemyFragment</sprite>
-    <sprite>sprites\sSlowingEnemy</sprite>
-    <sprite>sprites\sprite7</sprite>
+    <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_player_fragment</sprite>
+    <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_shrinking_enemy</sprite>
+    <sprite>sprites\spr_exploding_enemy</sprite>
+    <sprite>sprites\spr_exploding_enemy_fragment</sprite>
+    <sprite>sprites\spr_slowing_enemy</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
+    <background>background\bgr_terrible</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\explodeIntoSomeChunks.gml</script>
-    <script>scripts\bounceOffWalls.gml</script>
-    <script>scripts\isHitByProjectile.gml</script>
+    <script>scripts\explode_into_some_chunks.gml</script>
+    <script>scripts\bounce_off_walls.gml</script>
+    <script>scripts\is_hit_by_projectile.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\oGame</object>
-    <object>objects\oPlayer</object>
-    <object>objects\oBullet</object>
-    <object>objects\oEnemy</object>
-    <object>objects\oExplodingEnemy</object>
-    <object>objects\oSlowingEnemy</object>
-    <object>objects\oPlayerChunk</object>
-    <object>objects\oExplodingEnemyChunk</object>
-    <object>objects\oProjectile</object>
+    <object>objects\obj_game</object>
+    <object>objects\obj_player</object>
+    <object>objects\obj_bullet</object>
+    <object>objects\obj_shrinking_enemy</object>
+    <object>objects\obj_exploding_enemy</object>
+    <object>objects\obj_slowing_enemy</object>
+    <object>objects\obj_projectile</object>
+    <objects name="Projectiles">
+      <object>objects\obj_player_fragment</object>
+      <object>objects\obj_exploding_enemy_fragment</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
