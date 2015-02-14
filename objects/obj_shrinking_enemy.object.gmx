@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>default_speed = 90; // pixels per second
 
+event_inherited();
 speed = default_speed / room_speed;
-direction = random(360);
 </string>
           </argument>
         </arguments>
@@ -51,15 +51,7 @@ direction = random(360);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
- * Facing
- */
-image_angle = direction;
-
-/*
- * Bouncing on edge of room
- */
-bounce_off_walls();
+            <string>event_inherited();
 
 /*
  * Damage
