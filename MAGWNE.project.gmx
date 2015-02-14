@@ -29,6 +29,7 @@
     <script>scripts\explode_into_some_chunks.gml</script>
     <script>scripts\bounce_off_walls.gml</script>
     <script>scripts\is_hit_by_projectile.gml</script>
+    <script>scripts\guassian_random.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_game</object>
