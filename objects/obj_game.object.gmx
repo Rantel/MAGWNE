@@ -49,6 +49,9 @@ surface_resize(application_surface, view_wport[0],view_hport[0]);
  */
 seconds_between_enemy_spawns = 0.5;
 seconds_since_last_enemy_spawn = 0;
+
+// Give the game a random seed.
+randomize();
 </string>
           </argument>
         </arguments>
