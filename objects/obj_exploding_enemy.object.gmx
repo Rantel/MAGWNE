@@ -69,6 +69,7 @@ if ((x &lt;= 0) || (x &gt;= room_width)) {
  */
 if (is_hit_by_projectile()) {  
     explode_into_some_chunks(5, obj_exploding_enemy_fragment);
+    audio_play_sound(snd_explosion, 1, false);
 }
 </string>
           </argument>

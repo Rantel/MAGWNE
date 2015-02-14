@@ -71,7 +71,7 @@ if (is_hit_by_projectile()) {
 }
 
 if (image_yscale &lt;= 0) {
-    instance_create(random(room_width), random(room_height), obj_shrinking_enemy);
+    audio_play_sound(snd_explosion, 1, false);
     instance_destroy();
 }
 </string>

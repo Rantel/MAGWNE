@@ -79,12 +79,14 @@ speed *= random_range(0.5, 1.5);
       y = starting_y;
       if (in_position) {
          obj_player_fragment.number_of_fragments_reassembled++;
+         audio_play_sound(snd_fragment_arrive, 1, false);
          in_position = !in_position;
       }
       if (obj_player_fragment.number_of_fragments_reassembled &gt;= instance_number(obj_player_fragment)) {
            obj_player_fragment.number_of_fragments_reassembled = 0;
            instance_create(x, y, obj_player);
-           with (obj_player_fragment) instance_destroy();  
+           with (obj_player_fragment) instance_destroy();
+           audio_play_sound(snd_player_reassemble, 1, false); 
       }                
    }
 }

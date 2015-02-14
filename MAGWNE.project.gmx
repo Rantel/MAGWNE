@@ -7,6 +7,9 @@
   <sounds name="sound">
     <sound>sound\snd_bullet_shot</sound>
     <sound>sound\snd_player_explosion</sound>
+    <sound>sound\snd_player_reassemble</sound>
+    <sound>sound\snd_explosion</sound>
+    <sound>sound\snd_fragment_arrive</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
@@ -16,6 +19,7 @@
     <sprite>sprites\spr_exploding_enemy</sprite>
     <sprite>sprites\spr_exploding_enemy_fragment</sprite>
     <sprite>sprites\spr_slowing_enemy</sprite>
+    <sprite>sprites\spr_machine_gun</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgr_terrible</background>
@@ -28,6 +32,7 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_game</object>
+    <object>objects\obj_machine_gun</object>
     <objects name="Physical objects">
       <object>objects\obj_player</object>
       <objects name="Projectiles">
