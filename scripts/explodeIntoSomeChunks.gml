@@ -5,5 +5,5 @@ for (var bits = 0; bits < numberOfBits; bits++) {
     var bit = instance_create(x, y, chunkType);
 }
 
-audio_play_sound(aExplosion, 2, false);
+audio_play_sound(aExplosion, 0, false);
 instance_destroy();

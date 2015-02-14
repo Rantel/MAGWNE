@@ -76,12 +76,14 @@ if (!reassembling) {
       y = startingY;
       if (inPosition) {
          oGame.bitsReassembled++;
+         audio_play_sound(snd_fragment_arrive, 1, false);
          inPosition = !inPosition;
       }
       if (oGame.bitsReassembled &gt;= oGame.numberOfPlayerBits) {
            oGame.bitsReassembled = 0;
            instance_create(x, y, oPlayer);
-           with (oPlayerChunk) instance_destroy();  
+           with (oPlayerChunk) instance_destroy();
+           audio_play_sound(snd_player_reassemble, 1, false);
       }                
    }
 }

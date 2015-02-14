@@ -49,6 +49,12 @@ view_wport = ScreenWidth;
 view_hport = ScreenHeight;
 
 surface_resize(application_surface, view_wport[0],view_hport[0]);
+
+/*
+ * Enemy Spawning
+ */
+seconds_between_enemy_spawns = 0.5;
+seconds_since_last_enemy_spawn = 0;
 </string>
           </argument>
         </arguments>
@@ -78,6 +84,25 @@ if (keyboard_check_pressed(vk_escape)) {
 
 if (keyboard_check_pressed(ord('R'))) {
     game_restart();
+}
+
+/*
+ * Enemy spawning
+ */
+seconds_since_last_enemy_spawn += 1 / room_speed;
+if (seconds_since_last_enemy_spawn &gt;= seconds_between_enemy_spawns) {
+   var spawn_x = 0;
+   var spawn_y = 0;
+   if (choose(true, false)) {
+       spawn_x = choose(1, room_width-1);
+       spawn_y = random(room_height);
+   } else {
+     spawn_y = choose(1, room_width-1);
+     spawn_x = random(room_width);
+   }
+   seconds_since_last_enemy_spawn = 0;
+   //spawn enemy
+   instance_create(spawn_x, spawn_y, choose(oEnemy, oExplodingEnemy, oSlowingEnemy));
 }
 </string>
           </argument>

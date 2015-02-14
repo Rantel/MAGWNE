@@ -67,7 +67,8 @@ if ((x &lt;= 0) || (x &gt;= room_width)) {
 /*
  * Damage
  */
-if (isHitByProjectile()) {  
+if (isHitByProjectile()) {
+    audio_play_sound(snd_explosion, 1, false);
     explodeIntoSomeChunks(5, oExplodingEnemyChunk);
 }
 

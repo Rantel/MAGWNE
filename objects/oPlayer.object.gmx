@@ -8,6 +8,30 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>default_weapon = obj_machine_gun;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -57,23 +81,6 @@ if (keyboard_check(ord('D'))) {
  */
 image_angle = point_direction(x, y, mouse_x, mouse_y);
 
-/*
- * Firing
- */
-if (mouse_check_button(mb_left)) {
-    var myBullet = instance_create(x, y, oBullet);
-    myBullet.direction = image_angle;
-    myBullet.image_angle = image_angle;
-    myBullet.speed = 600 / room_speed;
-    
-    kick = 300 / room_speed;
-    kickDirection = (image_angle + 180) % 360;
-    
-    x = x + lengthdir_x(kick, kickDirection);
-    y = y + lengthdir_y(kick, kickDirection);
-    
-    audio_play_sound(aShoot, 1, false);
-}
 
 /*
  * Stay inside the room
@@ -89,6 +96,15 @@ if (y &gt; room_height) y = room_height;
 enemyTouchingMe = instance_place(x, y, oEnemy);
 if (instance_exists(enemyTouchingMe)) {
    explodeIntoSomeChunks(oGame.numberOfPlayerBits, oPlayerChunk);
+}
+
+/*
+ * Item pickup
+ */
+var item_touching_me = instance_place(x, y, obj_machine_gun);
+if (item_touching_me != noone) {
+   current_weapon = item_touching_me;
+   item_touching_me.owner = self.id;
 }
 </string>
           </argument>
